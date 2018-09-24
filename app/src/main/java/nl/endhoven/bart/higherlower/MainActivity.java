@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextViewScore;
 
     private ListView mListView;
-    private List<Dices> mDices;
+    private List<Throw> mDices;
     private int iDice;
 
 
@@ -53,13 +53,15 @@ public class MainActivity extends AppCompatActivity {
 
         mDices = new ArrayList<>();
         mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mDices);
+        mAdapter.add("Test1");
         mListView.setAdapter(mAdapter);
 
         //Create array of drawables
         mImageNames = new int[]{R.drawable.d1, R.drawable.d2, R.drawable.d3, R.drawable.d4, R.drawable.d5, R.drawable.d6};
 
         mImageView.setImageResource(mImageNames[0]);
-        mTextViewHighScore.setText(" Score: " +iCorrectGuesses);
+        mTextViewHighScore.setText("HighScore: " +iCorrectGuesses);
+        mTextViewScore.setText("Score: "+ iCorrectGuesses);
 
         //Random int for next dice
         iDice = new Random().nextInt(6);;
@@ -80,12 +82,18 @@ public class MainActivity extends AppCompatActivity {
                     mImageView.setImageResource(mImageNames[iDice]);
 
                 }
+                Throw newThrow = new Throw(iDice);
+                mDices.add(newThrow);
+                mAdapter.notifyDataSetChanged();
+
                 if (iCorrectGuesses > iHighScore){
                     iHighScore = iCorrectGuesses;
                     mTextViewHighScore.setText(" High-Score: " +iHighScore);
                 }
                 mTextViewScore.setText(" Score: " +iCorrectGuesses);
-                iDice = new Random().nextInt(6);;
+                iDice = new Random().nextInt(6);
+                updateUI();
+
             }
         });
 
@@ -103,12 +111,19 @@ public class MainActivity extends AppCompatActivity {
                     iCorrectGuesses = 0;
                     mImageView.setImageResource(mImageNames[iDice]);
                 }
+                Throw newThrow = new Throw(iDice);
+                mDices.add(newThrow);
+                mAdapter.notifyDataSetChanged();
+                updateUI();
+
                 if (iCorrectGuesses > iHighScore){
                     iHighScore = iCorrectGuesses;
                     mTextViewHighScore.setText(" High-Score: " +iHighScore);
                 }
                 mTextViewScore.setText(" Score: " +iCorrectGuesses);
-                iDice = new Random().nextInt(6);;
+                iDice = new Random().nextInt(6);
+                updateUI();
+
             }
         });
     }
@@ -133,5 +148,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void updateUI() {
+        if (mAdapter == null) {
+            mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mDices);
+            mListView.setAdapter(mAdapter);
+        } else {
+            mAdapter.notifyDataSetChanged();
+        }
     }
 }

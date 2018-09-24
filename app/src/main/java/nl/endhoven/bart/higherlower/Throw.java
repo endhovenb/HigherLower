@@ -1,13 +1,15 @@
 package nl.endhoven.bart.higherlower;
 
-public class Dices {
-    private String mDiceText;
+public class Throw {
+    private int mDiceText;
+
+    public Throw(int sDice){this.mDiceText = sDice;}
 
     public String getmDiceText() {
-        return mDiceText;
+        return "" + mDiceText;
     }
 
-    public void setmDiceText(String mDiceText) {
+    public void setmDiceText(int mDiceText) {
         this.mDiceText = mDiceText;
     }
 
@@ -16,4 +18,3 @@ public class Dices {
         return "Throw is " + mDiceText;
     }
 }
-

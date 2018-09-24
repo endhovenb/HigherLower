@@ -12,10 +12,12 @@
         android:id="@+id/fabLower"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="120dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/img_Dices"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/arrow_down_float" />
 
@@ -23,24 +25,27 @@
         android:id="@+id/fabHigher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="120dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.392"
+        app:layout_constraintStart_toEndOf="@+id/img_Dices"
         app:srcCompat="@android:drawable/arrow_up_float" />
 
     <ImageView
         android:id="@+id/img_Dices"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/fabHigher"
-        app:layout_constraintStart_toEndOf="@+id/fabLower"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/d1" />
 
     <TextView
@@ -69,8 +74,10 @@
         android:id="@+id/lstAnswers"
         android:layout_width="368dp"
         android:layout_height="166dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/img_Dices"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtHighscore" />
 </android.support.constraint.ConstraintLayout>
