@@ -72,11 +72,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if ( iDice > iCurrentImageIndex){
+                    Snackbar.make(view, "Correct.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                     iCorrectGuesses++;
                     iCurrentImageIndex = iDice;
                     mImageView.setImageResource(mImageNames[iDice]);
                 }
                 else{
+                    Snackbar.make(view, "Game over..", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                     System.out.println("Failed!");
                     iCorrectGuesses = 0;
                     mImageView.setImageResource(mImageNames[iDice]);
@@ -102,11 +104,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if ( iDice < iCurrentImageIndex){
+                    Snackbar.make(view, "Correct.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                     iCorrectGuesses++;
                     iCurrentImageIndex = iDice;
                     mImageView.setImageResource(mImageNames[iDice]);
                 }
                 else{
+                    Snackbar.make(view, "Game over..", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                     System.out.println("Failed!");
                     iCorrectGuesses = 0;
                     mImageView.setImageResource(mImageNames[iDice]);
